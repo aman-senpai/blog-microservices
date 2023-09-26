@@ -1,6 +1,10 @@
 # Use a base image with Node.js pre-installed
 FROM node:14-alpine
 
+# Add the following lines
+ENV CI=true
+ENV WDS_SOCKET_PORT=0
+
 # Set the working directory in the container
 WORKDIR /usr/app
 
@@ -18,3 +22,16 @@ COPY ./ ./
 
 # Default command
 CMD ["npm", "start"]
+
+
+
+# FROM node:alpine
+
+
+
+# WORKDIR /app
+# COPY package.json ./
+# RUN npm install
+# COPY ./ ./
+
+# CMD ["npm", "start"]
