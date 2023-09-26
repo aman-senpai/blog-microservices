@@ -25,26 +25,34 @@ The Microservices-Based Blog Application is composed of several microservices, e
 
 1. **Posts Service**: Manages blog posts and their associated comments. Provides endpoints for creating, retrieving, updating, and deleting posts.
 
+   - Commit: `8940f8b` - Implement ingress-nginx controller and connect all the services to the right ports
+
 2. **Comments Service**: Handles comments for blog posts. Allows users to create comments, retrieve comments for a specific post, and handles events related to comment moderation.
+
+   - Commit: `2ab40b2` - Complete Comment Moderation Service
 
 3. **Comment Moderation Service**: Moderates comments based on content criteria. Approves or rejects comments and sends updated events.
 
+   - Commit: `3813a08` - Implement Event Sync
+
 4. **Query Service**: Serves as a query interface to retrieve blog posts and their associated comments. It listens for events and updates its data for efficient querying.
+
+   - Commit: `fea1e14` - Implement query service
 
 5. **Event Bus Service**: Facilitates communication between microservices by allowing them to publish and subscribe to events. It ensures that events are distributed to relevant microservices.
 
+   - Commit: `ad72af5` - Create event bus
+
 ## Usage
 
-1. Start each microservice individually. You can use the following commands for each service:
+1. The dev server is setup using skaffold
+2. To run this you'll need skaffold installed in your system install it from [here](https://skaffold.dev/docs/install/).
 
    ```bash
-   # cd into each service directory and run this command
-   npm start
+   # 
+   skaffold dev
    ```
 
-2. Ensure that each microservice is running and accessible on its designated port.
-
-3. Interact with the application using the provided API endpoints for each microservice.
 
 ## Dependencies
 
@@ -68,3 +76,7 @@ The application's moderation criteria for comments can be customized to fit your
 The Microservices-Based Blog Application showcases a powerful, event-driven microservices architecture for building scalable and resilient web applications. It provides flexibility in adding new features and scaling individual components to meet growing demands.
 
 Please refer to the individual README files for each microservice for more detailed information on how to use and configure them within the application.
+
+```
+   # This is learning project.
+```
