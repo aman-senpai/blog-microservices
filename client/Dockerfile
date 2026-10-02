@@ -1,9 +1,5 @@
 # Use a base image with Node.js pre-installed
-FROM node:14-alpine
-
-# Add the following lines
-ENV CI=true
-ENV WDS_SOCKET_PORT=0
+FROM node:24-alpine
 
 # Set the working directory in the container
 WORKDIR /usr/app
@@ -11,27 +7,11 @@ WORKDIR /usr/app
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Clear the npm cache
-RUN npm cache clean --force
-
-# Install some dependencies
+# Install dependencies
 RUN npm install
 
 # Copy the rest of your application code
 COPY ./ ./
 
-# Default command
-CMD ["npm", "start"]
-
-
-
-# FROM node:alpine
-
-
-
-# WORKDIR /app
-# COPY package.json ./
-# RUN npm install
-# COPY ./ ./
-
-# CMD ["npm", "start"]
+# Default command (Vite dev server, bound to 0.0.0.0 via vite.config.js)
+CMD ["npm", "run", "dev"]
